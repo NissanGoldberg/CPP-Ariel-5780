@@ -1,5 +1,17 @@
 # Linux and Bash commands
 
+```bash
+$ echo hello world!
+```
+
+## File System
+
+> _On a UNIX system, everything is a file; if something is not a file, it is a process._
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Standard-unix-filesystem-hierarchy.svg/800px-Standard-unix-filesystem-hierarchy.svg.png)
+
+More info can be found [here](https://www.youtube.com/watch?v=HbgzrKJvDRw&t=)
+
 ## Basic Linux commands
 
 `pwd` - gives us the absolute path, which means the path that starts from the root.
@@ -155,6 +167,12 @@ $ echo hello, my name is nissan | tee new.txt
 hello, my name is nissan
 ```
 
+A third expample would to use `grep` which searchs for words and `ps` which shows processes.
+
+```bash
+ps | grep $$
+```
+
 ## Process Substitution
 
 Instead of comparing two files like this
@@ -172,6 +190,365 @@ diff <(sort file1.txt) <(sort file2.txt)
 ```
 
 More on sorting can be found [here](https://www.geeksforgeeks.org/sort-command-linuxunix-examples/)
+
+## Bashing
+
+### Simple script
+
+Let us start by creating a script named _test.sh_ and adding some text
+
+```bash
+~/cpp$ touch test.sh
+~/cpp$ echo 'echo hello world' >> test.sh
+```
+
+Now we have to change give the file execute permission using the `chmod` command the `+x` is the same as `a+x` or all and gives _**execution**_ to _user, group and others_ [read here for more options](https://www.poftut.com/chmod-x-command-linux-unix/)
+
+```bash
+~/cpp$ chmod +x test.sh
+```
+
+Alternativly we can be more specific and use `chmod 755 test.sh`
+
+```bash
+~/cpp$ chmod 755 test.sh
+```
+
+the 7 represents the _**owners**_ permission the second number is the _**group**_ and the last number is the _**others**_ permission
+
+| 1st num | 2nd num | 3rd num |
+| :--- | :--- | :--- |
+| owner | user | other |
+
+The meaning of the numbers:
+
+| 1 | 2 | 4 |
+| :--- | :--- | :--- |
+| read | write | execute |
+
+If we add up the table above we get the following combinations. So 7 is **r,w,x** and 5 is **r,x**
+
+| 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| no permission | execute | write | write and execute | read | read and execute | read and write | read, write, and execute |
+
+![](https://lh3.googleusercontent.com/proxy/MSrYZf0zzaDaW1U3DwTaoTMeIhAHH_21IFhoakoDpp1d7QgNObbuHl5REVhSP6uTa-D08dazQnut6ALO-AnQ0Xae9DMW6LhPizoI0e--)
+
+Finally lets execute the file using `./` , if the file were in the parent we would use `../` instead
+
+```bash
+~$ ./test.sh
+hello world
+```
+
+### Variables
+
+Lets define a variable in our _test.sh_ script
+
+```bash
+myName="Nissan"
+```
+
+**Important!** do not put spaces on either side of `=` when defining variable
+
+We can do arithmetic using the `$((...))` and access the value use the `$` sign
+
+```bash
+num1=4
+num2=3
+num3=$((num1+num2))
+
+echo "4 + 3 = $num3"
+```
+
+```bash
+~$ ./test.sh
+4 + 3 = 7
+```
+
+#### More arithmetic
+
+```bash
+rand=5
+let rand+=4
+echo "$rand"
+```
+
+```bash
+$ ./test.sh
+9
+```
+
+If we were not to use `let` the rand would be treated as a string and the output would be 54. The `let` keyword which allows for variable creation with simple arithmetic evaluation. If you try to assign a string there like `let a="hello world"` _**you'll get a syntax error.**_
+
+```bash
+rand=5
+rand+=4
+echo "$rand"
+```
+
+```bash
+$ ./test.sh
+54
+```
+
+We can also do the use the `++var_name` inside `$((...))`
+
+```bash
+rand=5
+echo "$(( ++rand ))"
+```
+
+```bash
+$ ./test.sh
+6
+```
+
+## Functions
+
+To define a function use the following template `foo(){return}`
+
+```bash
+getDate(){
+        date
+        return
+}
+
+getDate
+```
+
+```bash
+$ ./test.sh
+Thu Mar  5 18:56:02 IST 2020
+```
+
+More complicated function with a return would be
+
+```bash
+get_sum(){
+    local num4=$1
+    local num5=$2
+    local num6=$3
+    local sum=$((((num4-num5))+num6))
+echo $sum
+}
+
+num1=5
+num2=3
+num3=7
+sum=$(get_sum num1 num2 num3)
+echo "The result is $sum"
+```
+
+```bash
+$ ./test.sh
+The result is 9
+```
+
+`$1` gets the first argument _num1_. `$2` gets the 2nd arg _num2_ etc. To define a local variable in a function use the keyword `local` e.g. `local num4=$1`
+
+### IO
+
+use `read` function for input. Add `-p` for prompt or what follows will be prompted to user
+
+```bash
+read -p "What is your name? " name
+echo "Hello $name"
+```
+
+```bash
+$ ./test.sh
+What is your name? nissan
+Hello nissan
+```
+
+Multiple inputs look like this
+
+```bash
+read -p "Enter nums: " num1 num2 num3
+echo "$num1 $num3"
+```
+
+```bash
+$ ./test.sh
+Enter nums: 1 2 3
+1 3
+```
+
+### Conditions
+
+`((...))` is referred to as arithmetic evaluation. The template is the following `if` `((...))` `;` `then`. To Finish the _if_ bracket use `fi` which is _if_ backwards. **Note:** `$[...]` is now deprecated
+
+```bash
+read -p "How old are you? " age
+
+if  (($age >= 18)) ; then
+        echo "You can buy cigarettes"
+elif (($age == 17)) ; then
+        echo "You can buy cigarettes next year"
+else
+        echo "Boy get out of here"
+fi
+```
+
+```bash
+$ ./test.sh
+How old are you? 21
+You can buy cigarettes
+```
+
+Another example:
+
+```bash
+read -p "Enter a number : " num
+
+if  (( ((num % 2)) ==0)) ; then
+        echo "It is even"
+fi
+
+if  (( ((num > 0)) && ((num < 11)))) ; then
+        echo "$num is between 1 and 10"
+fi
+```
+
+```bash
+$ ./test.sh
+Enter a number : 8
+It is even
+8 is between 1 and 10
+```
+
+### Conditions and commands
+
+```bash
+read -p "Enter a file name : " file
+
+if [ -e "$file" ] ; then
+        echo "File exists"
+else
+        echo "File doesn't exist"
+fi
+```
+
+```bash
+$ touch new_file.txt
+$ ./test.sh
+Enter a file name : new_file.txt
+File exists
+```
+
+`-e filename` - Check for file existence
+
+#### TODO find commands with \(\(...\)\) syntax
+
+### Strings
+
+```bash
+str="hello"
+echo "String len: ${#str}"
+echo "Splice str: ${str:2:4}"
+```
+
+### While Loop
+
+```bash
+num=1
+while (( $num < 4)); do
+        echo $(( num++ ))
+done
+```
+
+```bash
+$ ./test.sh
+1
+2
+3
+```
+
+Lets do something more complicated. First lets create a file.
+
+```bash
+$ echo 2010 .25 36 >> file.txt
+```
+
+Now lets edit our script
+
+```bash
+num=1
+while read num1 num2 num3; do
+        printf "Num1: ${num1}\n
+Num2: ${num2}\nNum3: ${num3}\n"
+
+done < file.txt
+```
+
+```bash
+$ ./test.sh
+Num1: 2010
+Num2: .25
+Num3: 36
+```
+
+`done < file.txt` _**pipes**_ the data from _file.txt_ into the while loop
+
+### For Loop
+
+Simple C style loop
+
+```bash
+for (( i=0; i<3; i=i+1)); do
+        echo $i
+done
+```
+
+For Range
+
+```bash
+for i in {A..C}; do
+        echo $i
+done
+```
+
+```bash
+$ ./test.sh
+0
+1
+2
+A
+B
+C
+```
+
+**Exercise:** Lets Print All odd numbers from 1 until 100
+
+```bash
+for i in {1..100}; do
+        if  (( ((i % 2)) ==1)) ; then
+            echo $i
+        fi
+done
+```
+
+### Arrays
+
+```bash
+some_nums=(3.14 2.718)
+some_nums[2]=1.618 
+echo "Phi : ${some_nums[2]}"
+```
+
+`some_nums[3]=1.618` will append to the array. To append multiple values would can do the following: `some_nums+=(1 7)`
+
+```bash
+$ ./test.sh
+Phi : 1.618
+```
+
+More info can be found [here](https://wiki-dev.bash-hackers.org/syntax/arith_expr)
+
+### Regex
+
+### Case
 
 Credits to: [Basic Linux Commands for Beginners](https://maker.pro/linux/tutorial/basic-linux-commands-for-beginners)
 
