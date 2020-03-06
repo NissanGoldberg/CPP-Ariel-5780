@@ -16,3 +16,19 @@
 * [OOP](lecture-2/untitled.md)
 * [Exercises](lecture-2/exercises.md)
 
+## Lecture 3 - Composition and References
+
+* [Untitled](lecture-3-composition-and-references/untitled.md)
+
+## Lecture 4 - Const, Friend and Operators
+
+* [Untitled](lecture-4-const-friend-and-operators/untitled.md)
+
+## Lecture 5 - Copy ctor and Conversion
+
+* [Untitled](lecture-5-copy-ctor-and-conversion/untitled.md)
+
+## Lecture 6 - Inheritance
+
+* [Untitled](lecture-6-inheritance/untitled.md)
+
