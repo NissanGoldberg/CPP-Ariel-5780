@@ -17,5 +17,7 @@ int main() {
 
 ### Special thanks to **Dr. Erel Segel HaLevi** for his contributions and code
 
+My databases gitbook can be found [here ](https://app.gitbook.com/@nissan-goldberg/s/databases/)
+
 
 
