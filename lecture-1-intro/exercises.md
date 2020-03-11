@@ -73,7 +73,7 @@ done
 echo "$sum $num_or_args" | awk '{printf "%.3f \n", $1/$2}'
 ```
 
-## Exercise 3a: Lets build our own GREP
+## Exercise 3a: Bash and GREP
 
 Write a program a program that will receive a filename as an input. The user will then be prompted to enter how many lines to show and the string to search for. After so the user will be prompted to enter if he would wish to output the search to a file. The output should be like the following:
 
