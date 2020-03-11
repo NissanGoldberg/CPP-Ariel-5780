@@ -13,7 +13,7 @@ int main() {
 
 ## By Nissan Goldberg 
 
-#### In collaboration with Ivgeni Neiterman 
+#### In collaboration with Evgeny Neiterman 
 
 ### Special thanks to **Dr. Erel Segel HaLevi** for his contributions and code
 
