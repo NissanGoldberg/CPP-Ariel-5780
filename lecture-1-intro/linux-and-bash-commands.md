@@ -145,7 +145,7 @@ Here we chose **EOF** as the literal, similiarly we could has wrote **stop\_inpu
 
 ### Pipelines
 
-Pipelines, often called pipes, is a way to chain commands and connect output from one command to the input of the next. A pipeline is represented by the pipe character: `|`
+Pipelines, often called pipes, is a way to chain commands and connect output from one **command** to the input of the **next command**. A pipeline is represented by the pipe character: `|`
 
 ```bash
 $ ls
