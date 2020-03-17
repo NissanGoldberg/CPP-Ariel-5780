@@ -249,7 +249,7 @@ Lets define a variable in our _test.sh_ script
 myName="Nissan"
 ```
 
-**Important!** do not put spaces on either side of `=` when defining variable
+> **Important!** do not put spaces on either side of `=` when defining variable
 
 We can do arithmetic using the `$((...))` and access the value use the `$` sign
 
