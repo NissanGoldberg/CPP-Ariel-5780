@@ -96,7 +96,7 @@ hello, my name is nissan
 `>` is used to redirect output or _**output to**_
 
 ```bash
-$echo "hello" > file.txt
+$ echo "hello" > file.txt
 ```
 
 ### Redirect input
