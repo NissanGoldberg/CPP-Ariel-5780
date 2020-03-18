@@ -72,17 +72,15 @@ A little bit more difficult example is the following
 ```cpp
 #include <iostream>
 #include <string>
-int main()
-{
+int main(){
     std::string str;
     int a;
     double b;
     std::cin >> str >> a >> b;
-    if(std::cin.fail())
-    {
+    if(std::cin.fail()){
         std::cerr << "input problem\n";
         return 1;
-        }
+    }
     std::cout << "I got: "<< str << ' '
     << a << ' ' << b << std::endl;
 }
@@ -116,14 +114,12 @@ To create a namespace use the `namespace` keyword. To use the namespace created 
 using namespace std; 
 
 // Variable created inside namespace 
-namespace first 
-{ 
+namespace first { 
     int val = 500; 
 } 
 
 
-int main() 
-{ 
+int main() { 
     int val = 200; // Local variable 
     cout << first::val << '\n';  //namespace var
     return 0; 
@@ -141,14 +137,12 @@ Namespaces can also be used to access functions
 ```cpp
 #include <iostream>
 using namespace std;
-namespace ns  
-{ 
+namespace ns  { 
     const double x = 100; 
     double value() {  return 2*x; } 
 } 
 
-int main() 
-{ 
+int main() { 
     // Access value function within ns 
     cout << ns::value() << endl;  
     // Access variable x directly 
@@ -168,15 +162,14 @@ To access a namespace without explicitly calling each the the _ns::variable_ you
 
 ```cpp
 using namespace std;
-namespace ns
-{
+namespace ns{
     const double x = 100;
     double value() {  return 2*x; }
 }
 
 using namespace ns;
-int main()
-{
+
+int main(){
     cout << value() << endl; 
     cout << x << endl;
     return 0;
@@ -190,8 +183,7 @@ This allows us to use _x_ and _value_ in the namespace without using the `::` op
 A better solution is to use the namespace only where you need it, for example inside the function.
 
 ```cpp
-void foo()
-{
+void foo(){
   using namespace std;
   using ns::context;
   // some implementation
