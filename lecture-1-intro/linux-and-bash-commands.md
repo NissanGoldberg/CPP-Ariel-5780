@@ -571,7 +571,17 @@ len=${#distro[@]}
 for (( i=0; i<$len; i++ )); do echo "${distro[$i]}" ; done
 ```
 
-More info can be found [here](https://wiki-dev.bash-hackers.org/syntax/arith_expr)
+**When to use curly brackets?**
+
+Curly braces are also unconditionally required when:
+
+* expanding array elements, as in ${array\[42\]}
+* using parameter expansion operations, as in ${filename%.\*} \(remove extension\)
+* expanding positional parameters beyond 9: "$8 $9 ${10} ${11}"
+
+more about curly bracket can be found [here](https://stackoverflow.com/questions/8748831/when-do-we-need-curly-braces-around-shell-variables)
+
+More info about bash can be found [here](https://wiki-dev.bash-hackers.org/syntax/arith_expr)
 
 ### Regex
 
