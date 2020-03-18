@@ -5,6 +5,7 @@
 ## Homework
 
 * [Homework and Instructions](homework/homework-and-instructions.md)
+* [Course Updates](homework/course-updates.md)
 
 ## Lecture 1 - Intro
 
