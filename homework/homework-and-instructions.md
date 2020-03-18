@@ -10,3 +10,9 @@ Homework instructions for 5780 can be found [here](https://github.com/erelsgl-at
 
 The **1st** exercise can be found [here](https://github.com/cpp-exercises/phonetic-search-a)
 
+```bash
+git clone https://github.com/cpp-exercises/phonetic-search-a.git
+```
+
+
+
