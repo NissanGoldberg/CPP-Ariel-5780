@@ -234,6 +234,15 @@ If we add up the table above we get the following combinations. So 7 is **r,w,x*
 
 ![](https://lh3.googleusercontent.com/proxy/MSrYZf0zzaDaW1U3DwTaoTMeIhAHH_21IFhoakoDpp1d7QgNObbuHl5REVhSP6uTa-D08dazQnut6ALO-AnQ0Xae9DMW6LhPizoI0e--)
 
+Lets now look if the permissions have changed by using `ls -lh` , we'll see the following
+
+```bash
+$ ls -lh
+total 56K
+...
+-rwxrwxrwx 1 nissan nissan 1.2K Mar  9 11:41 test.sh
+```
+
 Finally lets execute the file using `./` , if the file were in the parent we would use `../` instead
 
 ```bash
