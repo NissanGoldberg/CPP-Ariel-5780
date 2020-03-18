@@ -124,14 +124,11 @@ enum class suit {club, diamonds, hearts, spades };
 To prevent early termination of a program we mush _**throw**_ and **catch** an **exception** by using the keywords `throw`, `try` and `catch`
 
 ```cpp
-try
-  {
+try{
     throw 20;
-  }
-  catch (int e)
-  {
+}catch (int e){
     cout << "An exception occurred. Exception Num. " << e << '\n';
-  }
+}
 ```
 
 #### **`output`**
