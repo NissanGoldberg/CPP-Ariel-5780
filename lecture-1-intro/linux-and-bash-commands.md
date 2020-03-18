@@ -553,6 +553,24 @@ $ ./test.sh
 Phi : 1.618
 ```
 
+use @ and **\#** e.g. `#some_nums[@]` to get number of elements in array
+
+```bash
+some_nums=(3.14 2.718)
+some_nums[2]=1.618 
+echo "len : ${#some_nums[@]}"
+```
+
+**Explanation**: If subscript is `@` or`*`, the word expands to all members of name. By prefixing `#` to variable you will find length of an array \(i.e number of elements\).
+
+```bash
+distro=("redhat" "debian" "gentoo")
+## get length of $distro array
+len=${#distro[@]}
+## Use bash for loop 
+for (( i=0; i<$len; i++ )); do echo "${distro[$i]}" ; done
+```
+
 More info can be found [here](https://wiki-dev.bash-hackers.org/syntax/arith_expr)
 
 ### Regex
