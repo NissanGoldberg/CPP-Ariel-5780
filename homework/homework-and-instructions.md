@@ -8,5 +8,5 @@ Homework instructions for 5780 can be found [here](https://github.com/erelsgl-at
 * כל סטודנט שייבחר להציג יזכה במענק של נקודה **אחת עד 3** לציון הבחינה.
 * * המענק יינתן **רק למציגים** – ולא לשותפים
 
-The first exercise can be found [here](https://github.com/cpp-exercises/phonetic-search-a)
+The **1st** exercise can be found [here](https://github.com/cpp-exercises/phonetic-search-a)
 

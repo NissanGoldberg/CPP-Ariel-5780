@@ -2,14 +2,17 @@
 
 * [CPP 5780 - Ariel](README.md)
 
+## Homework
+
+* [Homework and Instructions](homework/homework-and-instructions.md)
+
 ## Lecture 1 - Intro
 
 * [IO and Namespaces](lecture-1-intro/untitled.md)
 * [Enums and Exceptions](lecture-1-intro/enums-and-exceptions.md)
 * [Overloading and Linking](lecture-1-intro/overloading-and-linking.md)
 * [Linux and Bash commands](lecture-1-intro/linux-and-bash-commands.md)
-* [Exercises](lecture-1-intro/exercises/README.md)
-  * [Homework and Instructions](lecture-1-intro/exercises/homework-and-instructions.md)
+* [Exercises](lecture-1-intro/exercises.md)
 
 ## Lecture 2 - OOP <a id="lecture-2"></a>
 
