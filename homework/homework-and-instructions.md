@@ -1,5 +1,7 @@
 # Homework and Instructions
 
+The syllabus can be found [here ](https://github.com/erelsgl-at-ariel/cpp-5780/blob/master/syllabus.pdf)
+
 Homework instructions for 5780 can be found [here](https://github.com/erelsgl-at-ariel/cpp-5780/blob/master/homework-instructions.pdf)
 
 * מומלץ להגיש בזוגות. אפשר גם להגיש בשלשות
