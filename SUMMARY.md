@@ -17,9 +17,10 @@
 
 ## Lecture 2 - OOP <a id="lecture-2"></a>
 
-* [Makefile](lecture-2/makefile.md)
 * [OOP](lecture-2/untitled.md)
-* [Exercises](lecture-2/exercises.md)
+* [More Linux](lecture-2/more-linux.md)
+* [Compiler Flags](lecture-2/compiler-flags.md)
+* [Makefile](lecture-2/makefile.md)
 
 ## Lecture 3 - Composition and References
 
