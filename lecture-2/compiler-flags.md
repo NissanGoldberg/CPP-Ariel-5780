@@ -110,7 +110,11 @@ Release run
 
 ### `-I<dir>`, `--include-directory <arg>`, `--include-directory=<arg>`
 
-If we had these 3 files but _MyClass.cpp_ and _MyClass.hpp_ were in a different folder **ADD PICTURE**
+If we had these 3 files but _MyClass.cpp_ and _MyClass.hpp_ were in a different folder 
+
+![](../.gitbook/assets/clang-i-picture.png)
+
+
 
 include/MyClass.hpp
 
