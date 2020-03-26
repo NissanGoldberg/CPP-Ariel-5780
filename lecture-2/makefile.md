@@ -102,3 +102,56 @@ clean:
     rm -f *.o a.out
 ```
 
+#### Bash and Makefiles
+
+Lets say that we only have _**main.cpp**_, _**makefile**_ and a _**s.sh**_
+
+{% code title="makefile" %}
+```bash
+a.out : main.cpp Point.cpp Point.hpp
+	g++ -o $@ $^ 
+```
+{% endcode %}
+
+{% code title="main.cpp" %}
+```cpp
+#include "Point.hpp"
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    Point p1;
+    cout << "p1 = " << p1.to_string() << endl;
+
+    p1.setX(10);
+    p1.setY(20);
+    cout << "p1 = " << p1.to_string() << endl;
+
+    Point p2 {11,21};
+    cout << "p2 = " << p2.to_string() << endl;
+    return 0;
+}
+```
+{% endcode %}
+
+{% code title="s.sh" %}
+```bash
+wget -O Point.hpp https://raw.githubusercontent.com/erelsgl-at-ariel/cpp-5780/master/02-classes-constructors-destructors/4-constructors/Point.hpp && \
+wget -O Point.cpp https://raw.githubusercontent.com/erelsgl-at-ariel/cpp-5780/master/02-classes-constructors-destructors/4-constructors/Point.cpp && \
+make && \
+echo -e "===Archiving and Compressing===\n" 
+tar cvzf files.tar.gz *.cpp *.hpp *.out
+
+mkdir program_dir && \
+echo -e "===Moving files===\n" && \
+mv files.tar.gz program_dir 
+
+echo -e "===starting program===\n"
+./a.out
+
+gfast
+
+```
+{% endcode %}
+
