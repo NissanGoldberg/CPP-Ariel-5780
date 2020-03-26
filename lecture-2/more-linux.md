@@ -27,6 +27,34 @@ $ uname \
 4.4.0-18362-Microsoft
 ```
 
+## Why do we use `./` to execute a file in Linux?
+
+Because the current directory isn't in your `$PATH` . This is mainly for security reasons.
+
+## Sourcing and Executing
+
+#### `source`
+
+`source` or `.` **\(with a space afterwards\)** will execute the file in the **current environment**. This explains why we source the `~/.bashrc` file, so that it will export variables and alias in the current environment.
+
+```bash
+source foo.sh
+```
+
+or
+
+```bash
+. foo.sh
+```
+
+#### executing
+
+to execute we do the following `./a.out`. This is executed as a **child process**. Therefore when the child terminates the **parent doesn't have access** to the changes
+
+```bash
+./a.out
+```
+
 ## `export`
 
 The `export` command provides the ability to update the current shell session about the change you made to the exported variable
@@ -51,6 +79,41 @@ $ a.out
 Hello world!
 ```
 
+To export a **function** we use the `-f` flag like so: `export -f foo`
+
+```bash
+foo(){
+        if git add *.cpp *.hpp makefile *.md ; then
+            printf '\33[1;32mAdd\33[m:      \U00002714 \n'
+            if git commit -m "$*"; then
+                   printf '\33[1;32mCommit\33[m:    \U00002714 \n'
+                   if git push ; then
+                       printf '\33[1;32mAdd\33[m:       \U00002714 \n'
+                       printf '\33[1;32mCommit\33[m:    \U00002714 \n'
+                       printf '\33[1;32mPush\33[m:      \U0001F600 \n'
+                else
+                    printf 'commit:    \U0000E333 \n'
+                fi
+            else
+                printf 'commit:    \U0000E333 \n'
+            fi
+        else
+            printf 'add:    \U0000E333 \n'
+        fi
+        return
+}
+
+export -f foo
+```
+
+```bash
+$ source script.sh
+$ foo this is a new commit
+Add:       ✔
+Commit:    ✔
+Push:      😀
+```
+
 To remove an exported variable we use `unset`:
 
 ```bash
@@ -59,7 +122,7 @@ unset variable_name
 
 ## `alias`
 
-**Aliases** are like custom shortcuts used to represent a command. They are only stored in the current shell instance and will not be saved later on.
+**Aliases** are like custom shortcuts used to represent a command. They are only stored in the current shell instance and will not be saved later on. They instruct the shell to replace one string with another string _**while executing the commands**_.
 
 #### Creating an alias
 
@@ -101,6 +164,23 @@ $ gfast
 To https://github.com/NissanGoldberg/teaching_cpp.git
 ```
 
+```bash
+$ alias gfast="git add *.cpp *.hpp makefile *.md \
+ && git commit -m \"fast commit\" \
+ && git push && \
+ echo -e  \
+'add:    \U00002714  Pass \n\
+commit: \U00002714  Pass \n\
+push:   \U0001F600 Pass ' "
+
+ $ gfast
+1 file changed, 2 deletions(-)
+To https://github.com/NissanGoldberg/teaching_cpp.git
+add:    ✔  Pass
+commit: ✔  Pass
+push:   😀 Pass
+```
+
 #### Listing aliases
 
 ```bash
@@ -117,7 +197,7 @@ alias ls='ls --color=auto'
 $ unalias alias_name
 ```
 
-## Creating Permanent Aliases
+## Creating Permanent Aliases and Variables
 
 To permanently save our aliases we need to edit the `~/.bashrc` file
 
@@ -131,9 +211,39 @@ source ~/.bashrc
 
 `source` is the same as `.`
 
-## `export`  vs  `alias`
+Also, If you want to put the environment for _**system-wide**_ use you can do so with `/etc/environment` file. There you'll find a _PATH_ variable. But it is more recommended and easy to just edit your _**.bashrc**_ file.
 
-One difference between the two is that _**aliases are only a shell feature**_. Environment variables are inherited by all subprocesses \(unless deliberately cleared\).
+Here is a list of some environment variables:
+
+* `$PATH`- list of dirs your system looks for executable files
+* `$HOME` 
+* `$USER` 
+
+Now if we edit and source our _**.bashrc**_ file to include in a path lets called _my\_dir_ where the program is located and we have a program there called _**super\_cool\_program**_
+
+```bash
+# .bashrc file 
+export PATH=$PATH:my_dir
+```
+
+we can do the following from **any** directory
+
+```bash
+$ super_cool_program
+Hello world, I am now in control of your terminal, hahaha !!!
+```
+
+## `export`/variables  vs  `alias`
+
+One difference between the two is that _**aliases are only a shell feature**_, can _only_ be used as the names of programs to run, i.e. as the first word in a command line. Environment variables \(`export`\) are inherited by all **subprocesses/children** \(unless deliberately cleared\).
+
+```bash
+foo="mkdir Directory"
+echo $foo  # Prints "mkdir Directory"
+
+alias bar="mkdir Directory"
+echo bar  # Nothing gets expanded -- just "bar" is printed
+```
 
 ## `cp`
 
@@ -381,6 +491,4 @@ file1.txt
 file2.txt
 file3.txt
 ```
-
-## TODO - git
 
