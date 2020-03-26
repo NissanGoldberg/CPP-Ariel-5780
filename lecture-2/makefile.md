@@ -102,7 +102,7 @@ clean:
     rm -f *.o a.out
 ```
 
-#### Bash and Makefiles
+### Bash and Makefiles
 
 Lets say that we only have _**main.cpp**_, _**makefile**_ and a _**s.sh**_
 
