@@ -1,6 +1,6 @@
-# Makefile
+# index
 
-Special Thanks to Dr. Pinchas Weisberg :smile: 
+Special Thanks to Dr. Pinchas Weisberg :smiley:
 
 Create a file by the name of _**makefile**_ or _**Makefile**_ in the following format
 
@@ -73,6 +73,14 @@ Here we declared and used 4 different variables: _OBJFILES_, _PROGRAM_, _CC_ and
 
 Create a makefile for the following files: _**main.cpp, Point.cpp, Point.hpp, Rectangle.cpp, Rectangle.hpp, Circle.cpp Circle.hpp, Triangle.cpp Triangle.hpp**_. Rectangle, Circle and Triangle are all dependent on Point
 
+{% tabs %}
+{% tab title="" %}
+```
+
+```
+{% endtab %}
+
+{% tab title="Solution" %}
 ```text
 CXX=clang++-5.0
 CXXFLAGS=-std=c++17
@@ -101,17 +109,63 @@ main.o: main.cpp Point.hpp
 clean:
     rm -f *.o a.out
 ```
+{% endtab %}
+{% endtabs %}
+
+## Special Symbols
+
+Let say we have the following makefile
+
+```text
+all: library.cpp main.cpp
+```
+
+* `$@` evaluates to `all`
+* `$<` evaluates to `library.cpp`
+* `$^` evaluates to `library.cpp main.cpp`
+
+#### Example 1: Naive
+
+```text
+CC=gcc
+CFLAGS=-I.
+DEPS = hellomake.h
+
+%.o: %.c $(DEPS)
+    $(CC) -c -o $@ $< $(CFLAGS)
+
+hellomake: hellomake.o hellofunc.o 
+    $(CC) -o hellomake hellomake.o hellofunc.o
+```
+
+The `-I.` is included so that gcc will look in the current directory \(.\) for the _**header files**_. More examples can be found [here](https://www.rapidtables.com/code/linux/gcc/gcc-i.html).
+
+Let explain the following rule
+
+```text
+%.o: %.c $(DEPS)
+```
+
+The rule says that the .o file depends upon the .c version of the file and the .h files included in the DEPS macro. The rule then says that to generate the .o file, make needs to compile the .c file using the compiler defined in the CC macro.
+
+```text
+$(CC) -c -o $@ $< $(CFLAGS)
+```
+
+The `-c` flag says to generate the object file. the `-o` stands for _**output**_ and `-o $@` says to put the output of the compilation in the file named on the left side of the `:` e.g. hellomake The `$<` is the first item in the dependencies list
 
 ### Bash and Makefiles
 
-Lets say that we only have _**main.cpp**_, _**makefile**_ and a _**s.sh**_
+Lets say that we only have _**main.cpp, makefile**_ and a _**s.sh**_
 
-{% code title="makefile" %}
+{% tabs %}
+{% tab title="makefile" %}
 ```bash
 a.out : main.cpp Point.cpp Point.hpp
-	g++ -o $@ $^ 
+    g++ -o $@ $^
 ```
-{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 {% code title="main.cpp" %}
 ```cpp
@@ -151,7 +205,6 @@ echo -e "===starting program===\n"
 ./a.out
 
 gfast
-
 ```
 {% endcode %}
 

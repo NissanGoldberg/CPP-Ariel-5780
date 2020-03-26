@@ -20,7 +20,7 @@
 * [OOP](lecture-2/untitled.md)
 * [More Linux](lecture-2/more-linux.md)
 * [Compiler Flags](lecture-2/compiler-flags.md)
-* [Makefile](lecture-2/makefile.md)
+* [index](lecture-2/makefile.md)
 
 ## Lecture 3 - Composition and References
 
