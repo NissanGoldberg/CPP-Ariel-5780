@@ -22,7 +22,7 @@ git clone https://github.com/cpp-exercises/phonetic-search-a.git
 
 | יום ה' | יום ד' |
 | :--- | :--- |
-|  | אוריין |
+|  | **אוריין - נבחר** |
 |  | הילה |
 |  | עידו |
 |  | שחר |
