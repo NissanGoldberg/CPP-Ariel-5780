@@ -18,7 +18,9 @@ The **1st** exercise can be found [here](https://github.com/cpp-exercises/phonet
 git clone https://github.com/cpp-exercises/phonetic-search-a.git
 ```
 
-### המתמודדים שנשארו להצגת קוד. רק 2 ישארו בכל יום
+### המתמודדים שנשארו להצגת קוד. רק 2 ישארו בכל יום 
+
+כמובן שכולכם תותחים😊 וקשה מאוד לבחור בניכם
 
 | יום ה' | יום ד' |
 | :--- | :--- |
