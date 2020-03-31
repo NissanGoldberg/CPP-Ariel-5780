@@ -25,7 +25,6 @@ git clone https://github.com/cpp-exercises/phonetic-search-a.git
 | יום ה' | יום ד' |
 | :--- | :--- |
 |  | **אוריין - נבחר** |
-|  | הילה |
-|  | עידו |
-|  | ~~~~ |
+|  | **הילה- נבחרה** |
+|  | עידו- 3rd |
 
