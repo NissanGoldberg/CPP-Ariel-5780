@@ -204,6 +204,7 @@ mv files.tar.gz program_dir
 echo -e "===starting program===\n"
 ./a.out
 
+# alias gfast="git add *.cpp *.hpp makefile *.md && git commit -m \"fast commit\" && git push"
 gfast
 ```
 {% endcode %}
