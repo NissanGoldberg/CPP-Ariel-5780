@@ -27,5 +27,5 @@ git clone https://github.com/cpp-exercises/phonetic-search-a.git
 |  | **אוריין - נבחר** |
 |  | הילה |
 |  | עידו |
-|  | ~~שחר~~ |
+|  | ~~~~ |
 
