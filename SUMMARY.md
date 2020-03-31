@@ -25,6 +25,7 @@
 ## Lecture 3 - Composition and References
 
 * [Untitled](lecture-3-composition-and-references/untitled.md)
+* [TA - not ready](lecture-3-composition-and-references/ta-not-ready.md)
 
 ## Lecture 4 - Const, Friend and Operators
 
