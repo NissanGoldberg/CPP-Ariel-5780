@@ -12,6 +12,8 @@ Homework instructions for 5780 can be found [here](https://github.com/erelsgl-at
 
 ### \*\*\*\*[**הרשמה להצגת מטלה**](https://docs.google.com/spreadsheets/d/1ghNWg2OpOiEqaXrqzWp53Fk4cGXsKyV9dXEEP3D-jFk/edit#gid=0)\*\*\*\*
 
+### Exercise 1
+
 The **1st** exercise can be found [here](https://github.com/cpp-exercises/phonetic-search-a)
 
 ```bash
@@ -27,4 +29,10 @@ git clone https://github.com/cpp-exercises/phonetic-search-a.git
 |  | **אוריין - נבחר** |
 |  | **הילה- נבחרה** |
 |  | עידו- 3rd |
+
+### Exercise 2
+
+The **2nd** exercise can be found [here](https://github.com/cpp-exercises/ancestor-tree-a)
+
+
 
