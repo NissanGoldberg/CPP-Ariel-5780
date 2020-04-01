@@ -30,11 +30,11 @@ git clone https://github.com/cpp-exercises/phonetic-search-a.git
 
 | יום ה' | יום ד' |
 | :--- | :--- |
-| Albert | **אוריין - נבחר** |
+|  NetanelAlbert | **אוריין - נבחר** |
 | omer | **הילה- נבחרה** |
 | revertigo | עידו- 3rd |
 
-revertigo - had the most creative solution
+revertigo - had the most creative solution😊
 
 ### Exercise 2
 
