@@ -165,9 +165,7 @@ int main() {
 
 Lets add a default ctor
 
-## Tabs
-
-Date.h
+## 
 
 {% tabs %}
 {% tab title="main.cpp" %}
