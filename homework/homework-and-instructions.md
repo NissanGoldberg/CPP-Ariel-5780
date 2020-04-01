@@ -24,7 +24,9 @@ git clone https://github.com/cpp-exercises/phonetic-search-a.git
 
 ### המתמודדים שנשארו להצגת קוד. רק 2 ישארו בכל יום 
 
-כמובן שכולכם תותחים😊 וקשה מאוד לבחור בניכם
+כמובן שכולכם תותחים😊 וקשה מאוד לבחור בניכם.
+
+ לרובכם יהיה אפשרות להציג פעמיים מאחר שניתן להציג רק פעמיים.
 
 | יום ה' | יום ד' |
 | :--- | :--- |
