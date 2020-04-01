@@ -34,7 +34,7 @@ git clone https://github.com/cpp-exercises/phonetic-search-a.git
 | omer | **הילה- נבחרה** |
 | **revertigo - the chosen one** | עידו- 3rd |
 
-revertigo - had the most creative solution😊
+revertigo - had the most creative solution😂
 
 ### Exercise 2
 
