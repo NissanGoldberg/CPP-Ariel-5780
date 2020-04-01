@@ -19,7 +19,7 @@ int main() {
 
 My databases gitbook can be found [here ](https://app.gitbook.com/@nissan-goldberg/s/databases/)
 
-### Lecture 2 on the website is still a work in progress and may have changes.
+### Lecture 4 on the website is still a work in progress and may have changes.
 
 
 

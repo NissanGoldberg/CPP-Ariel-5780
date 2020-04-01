@@ -25,6 +25,8 @@
 ## Lecture 3 - Composition and References
 
 * [Date Class - Tirgul](lecture-3-composition-and-references/untitled.md)
+* [Composition and Init lists](lecture-3-composition-and-references/composition-and-init-lists.md)
+* [References](lecture-3-composition-and-references/references.md)
 * [TA - not ready](lecture-3-composition-and-references/ta-not-ready.md)
 
 ## Lecture 4 - Const, Friend and Operators
