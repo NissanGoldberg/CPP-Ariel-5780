@@ -30,9 +30,9 @@ git clone https://github.com/cpp-exercises/phonetic-search-a.git
 
 | יום ה' | יום ד' |
 | :--- | :--- |
-|  NetanelAlbert | **אוריין - נבחר** |
+| **NetanelAlbert - the chosen one** | **אוריין - נבחר** |
 | omer | **הילה- נבחרה** |
-| revertigo | עידו- 3rd |
+| **revertigo - the chosen one** | עידו- 3rd |
 
 revertigo - had the most creative solution😊
 
