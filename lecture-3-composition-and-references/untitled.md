@@ -3,7 +3,13 @@
 {% tabs %}
 {% tab title="main.cpp" %}
 ```cpp
- int main() {
+#include <iostream>
+#include <stdio.h>
+#include "Date.h"
+
+using namespace std;
+
+int main() {
 // defining a Data Object
     Date HerBirthDay(19,8,1976);
     printf("Her birthday is on %d / %d / %d \n",
