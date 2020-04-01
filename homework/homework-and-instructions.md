@@ -12,6 +12,8 @@ Homework instructions for 5780 can be found [here](https://github.com/erelsgl-at
 
 ### \*\*\*\*[**הרשמה להצגת מטלה**](https://docs.google.com/spreadsheets/d/1ghNWg2OpOiEqaXrqzWp53Fk4cGXsKyV9dXEEP3D-jFk/edit#gid=0)\*\*\*\*
 
+### [Exercises Calendar](https://calendar.google.com/calendar/embed?src=rco9l5v6m84rkra8pto6ou65t4%40group.calendar.google.com&ctz=Asia%2FJerusalem)
+
 ### Exercise 1
 
 The **1st** exercise can be found [here](https://github.com/cpp-exercises/phonetic-search-a)
