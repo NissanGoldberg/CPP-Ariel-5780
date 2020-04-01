@@ -1,9 +1,7 @@
 # Date Class - Tirgul
 
-## Tabs
-
-Date.h
-
+{% tabs %}
+{% tab title="Date.h" %}
 ```cpp
 #include <cstdio>
 
@@ -23,9 +21,9 @@ public:
 };
 #endif // DATE_H
 ```
+{% endtab %}
 
-Date.cpp
-
+{% tab title="Date.cpp" %}
 ```cpp
  #include "Date.h"
 
@@ -78,9 +76,9 @@ void Date :: advance() {
     }
 }
 ```
+{% endtab %}
 
-main.cpp
-
+{% tab title="main.cpp" %}
 ```cpp
  int main() {
 // defining a Data Object
@@ -97,6 +95,8 @@ main.cpp
     return 0;
 }
 ```
+{% endtab %}
+{% endtabs %}
 
 ### Function Prototype- הצהרה
 
@@ -169,6 +169,8 @@ Lets add a default ctor
 
 Date.h
 
+{% tabs %}
+{% tab title="Date.h" %}
 ```cpp
 class Date{
 public:
@@ -176,19 +178,21 @@ public:
     Date(int,int,int);
 }
 ```
+{% endtab %}
 
-Date.cpp
-
+{% tab title="Date.cpp" %}
 ```cpp
+#include "Date.h"
+
 Date :: Date() :
         day_(31), month_(12), year_(2000) { }
 
 Date::Date(int day, int month, int year) :
        day_(day), month_(month), year_(year) { }
 ```
+{% endtab %}
 
-The compiler knows which to ctor to call by the number of arguments in the parameter and their types.
-
+{% tab title="main.cpp" %}
 ```cpp
 int main() {
     Date hisBirthDay(19,8,1996); // calls 3 arg ctor
@@ -197,6 +201,10 @@ int main() {
     return 0;
 }
 ```
+{% endtab %}
+{% endtabs %}
+
+The compiler knows which to ctor to call by the number of arguments in the parameter and their types.
 
 ## Watch out from this!
 
@@ -217,24 +225,26 @@ The compiler believes this is a _**declaration of a function**_ who returns a Da
 
 Date.h
 
+{% tabs %}
+{% tab title="Date.h" %}
 ```cpp
  class Date{
 public:
     void advance();
     void advance(int k);//advance k days
 ```
+{% endtab %}
 
-Date.cpp
-
+{% tab title="Date.cpp" %}
 ```cpp
 void Date :: advance() {
   for(int i=1;i<=k; ++i)
     advance();
 }
 ```
+{% endtab %}
 
-main.cpp
-
+{% tab title="main.cpp" %}
 ```cpp
 int main() {
     Date hisBirthDay(19,8,1996);
@@ -243,6 +253,8 @@ int main() {
     return 0;
 }
 ```
+{% endtab %}
+{% endtabs %}
 
 ### Default args
 
