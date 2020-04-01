@@ -1,6 +1,25 @@
 # Date Class - Tirgul
 
 {% tabs %}
+{% tab title="main.cpp" %}
+```cpp
+ int main() {
+// defining a Data Object
+    Date HerBirthDay(19,8,1976);
+    printf("Her birthday is on %d / %d / %d \n",
+           HerBirthDay.theDay( ) , HerBirthDay.theMonth( ),
+           HerBirthDay.theYear( ) );
+    HerBirthDay.advance( );
+    printf("On %d / %d / %d she'll be very happy\n",
+           HerBirthDay.theDay( ) , HerBirthDay.theMonth( ),
+           HerBirthDay.theYear( ) );
+// HerBirthDay.day_ ++ ; // illegal: day_ is private
+// HerBirthDay.month_=8;// illegal: month_ is private
+    return 0;
+}
+```
+{% endtab %}
+
 {% tab title="Date.h" %}
 ```cpp
 #include <cstdio>
@@ -74,25 +93,6 @@ void Date :: advance() {
                 month_ ++;
             }
     }
-}
-```
-{% endtab %}
-
-{% tab title="main.cpp" %}
-```cpp
- int main() {
-// defining a Data Object
-    Date HerBirthDay(19,8,1976);
-    printf("Her birthday is on %d / %d / %d \n",
-           HerBirthDay.theDay( ) , HerBirthDay.theMonth( ),
-           HerBirthDay.theYear( ) );
-    HerBirthDay.advance( );
-    printf("On %d / %d / %d she'll be very happy\n",
-           HerBirthDay.theDay( ) , HerBirthDay.theMonth( ),
-           HerBirthDay.theYear( ) );
-// HerBirthDay.day_ ++ ; // illegal: day_ is private
-// HerBirthDay.month_=8;// illegal: month_ is private
-    return 0;
 }
 ```
 {% endtab %}
@@ -170,6 +170,17 @@ Lets add a default ctor
 Date.h
 
 {% tabs %}
+{% tab title="main.cpp" %}
+```cpp
+int main() {
+    Date hisBirthDay(19,8,1996); // calls 3 arg ctor
+    Date yesterday; // calls param-less ctor
+    Date array_of_dates[100]; // calls param-less ctor 100 times
+    return 0;
+}
+```
+{% endtab %}
+
 {% tab title="Date.h" %}
 ```cpp
 class Date{
@@ -189,17 +200,6 @@ Date :: Date() :
 
 Date::Date(int day, int month, int year) :
        day_(day), month_(month), year_(year) { }
-```
-{% endtab %}
-
-{% tab title="main.cpp" %}
-```cpp
-int main() {
-    Date hisBirthDay(19,8,1996); // calls 3 arg ctor
-    Date yesterday; // calls param-less ctor
-    Date array_of_dates[100]; // calls param-less ctor 100 times
-    return 0;
-}
 ```
 {% endtab %}
 {% endtabs %}
@@ -226,6 +226,17 @@ The compiler believes this is a _**declaration of a function**_ who returns a Da
 Date.h
 
 {% tabs %}
+{% tab title="main.cpp" %}
+```cpp
+int main() {
+    Date hisBirthDay(19,8,1996);
+    hisBirthDay.advance(3); //22-8-96
+    hisBirthDay.advance();
+    return 0;
+}
+```
+{% endtab %}
+
 {% tab title="Date.h" %}
 ```cpp
  class Date{
@@ -240,17 +251,6 @@ public:
 void Date :: advance() {
   for(int i=1;i<=k; ++i)
     advance();
-}
-```
-{% endtab %}
-
-{% tab title="main.cpp" %}
-```cpp
-int main() {
-    Date hisBirthDay(19,8,1996);
-    hisBirthDay.advance(3); //22-8-96
-    hisBirthDay.advance();
-    return 0;
 }
 ```
 {% endtab %}
