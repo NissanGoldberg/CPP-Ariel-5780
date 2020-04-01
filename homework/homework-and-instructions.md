@@ -36,5 +36,9 @@ git clone https://github.com/cpp-exercises/phonetic-search-a.git
 
 The **2nd** exercise can be found [here](https://github.com/cpp-exercises/ancestor-tree-a)
 
+```bash
+git clone https://github.com/cpp-exercises/ancestor-tree-a.git
+```
+
 
 
