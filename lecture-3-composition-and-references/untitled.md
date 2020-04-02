@@ -364,5 +364,43 @@ int main(){
 
 Here _**cpoint**_ address can't be changed but the values can. While _**ccpoint**_ can't change either
 
-## TODO pg. 43 onwards
+### Const and functions
+
+```cpp
+void printDate(Date d);
+void printDateP(Date* d);
+void printDatePConst(const Date* d);
+
+printDate(normDate); //ok
+printDate(constDate); //On good compilers - ALSO OK!!!!
+printDateP(&normDate); //ok
+printDatePConst(&normDate); //ok. Remember - const pointer can point to non-const
+printDatePConst(&constDate); //ok
+```
+
+The following case is **illegal**
+
+```cpp
+printDateP(&constDate); //Illegal!
+```
+
+#### Return values from functions
+
+```cpp
+const int * Date::getYearPointer() {
+  return &_year;
+```
+
+Here the returned pointer is const, though the original field wasn't. The following is legal:
+
+```cpp
+const int * pc = normDate.getYearPointer(); //ok
+```
+
+Here the following is **illegal**
+
+```cpp
+int * p = normDate.getYearPointer(); //illegal – function returns const pointer!
+*pc=3 //illegal! pc is a const pointer!
+```
 
