@@ -76,9 +76,9 @@ int main() {
 **Answer:**
 
 ```text
-A - parameterless ctor
-A - parameterless ctor
-B – parameterless ctor
+A: parameterless ctor
+A: parameterless ctor
+B: parameterless ctor
 B: dtor
 A: dtor
 A: dtor
