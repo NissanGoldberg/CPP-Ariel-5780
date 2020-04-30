@@ -446,7 +446,7 @@ void CombinationLockDoor :: unlock(const Date& c) {
 }
 ```
 
-### Build visual Chest
+## Build visual Chest \(not on test\)
 
 ```text
 +-- Chest
