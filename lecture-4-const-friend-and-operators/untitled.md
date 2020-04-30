@@ -1,5 +1,7 @@
 # Operator Overloading - Exercise
 
+### Predicate
+
 ```cpp
 #include <iostream>
 #include <vector>
@@ -54,7 +56,7 @@ How many num of numbers greater or equal to 2?
 cout << std::count_if(v.begin(), v.end(),[N](int a){ return (a >= N);}) <<endl;
 ```
 
-#### Revisiting the polynomial functor
+### Revisiting the polynomial functor
 
 $$ax^2+bx+c$$
 
@@ -900,7 +902,7 @@ poly2 =    0*x^3 + 45*x^2 + 3*x + 4
 45
 ```
 
-### Thinking exercise
+#### Thinking exercise
 
 Lets say we would like to add `< operator` what would you do?
 
@@ -919,7 +921,7 @@ Now we are able to sort our polynimials
 * Convert polynomial to array type instead of \_a,\_b
 * Deep copy
 
-#### Inline
+### Inline
 
 **Without inline**
 
