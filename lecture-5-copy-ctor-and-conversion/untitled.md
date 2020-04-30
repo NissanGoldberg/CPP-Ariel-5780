@@ -2,17 +2,24 @@
 
 ## Shallow and Deep Copying
 
-An object is copied when: 1. Constructing new object from existing; 2. Passing parameter by value; 3. Returning by value; 4. Assigning existing to existing.
+An object is copied when:
 
-Cases 1-3 are handled by copy constructor;
+1.  Constructing new object from existing
+2.  Passing parameter by value
+3. Returning by value
+4. Assigning existing to existing.
 
-Case 4 is handled by assignment operator.
+**Cases 1-3** are handled by copy constructor;
+
+**Case 4** is handled by assignment operator.
 
 **By default, both do shallow copy.**
 
 ### Rule of 3
 
-When you need to make a **deep copy** of an object, you need to define all of these: 1. **Copy constructor** 2. **Destructor** 3. **Operator =**
+When you need to make a **deep copy** of an object, you need to define all of these:
+
+ 1. **Copy constructor** 2. **Destructor** 3. **Operator =**
 
 ### Example of Deep Copy
 
@@ -155,7 +162,7 @@ assignment operator doing deep copy...
 
 ```cpp
 Vector(size_t length) // ctor
-�
+...
 int sum(const Vector& v) // function
 ...
 int i=3;
