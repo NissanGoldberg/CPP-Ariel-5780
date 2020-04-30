@@ -49,5 +49,11 @@ git clone https://github.com/cpp-exercises/ancestor-tree-a.git
 |  | **שירה צדוק** |
 | \*\*\*\* | **shaharivka** |
 
+### Exercise 3
+
+```bash
+git clone https://github.com/cpp-exercises/solver-a.git
+```
+
 
 
