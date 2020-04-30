@@ -44,5 +44,10 @@ The **2nd** exercise can be found [here](https://github.com/cpp-exercises/ancest
 git clone https://github.com/cpp-exercises/ancestor-tree-a.git
 ```
 
+| Wednesday | Thursday |
+| :--- | :--- |
+|  | **שירה צדוק** |
+| \*\*\*\* | **shaharivka** |
+
 
 
