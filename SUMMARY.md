@@ -39,5 +39,5 @@
 
 ## Lecture 6 - Inheritance
 
-* [Untitled](lecture-6-inheritance/untitled.md)
+* [Inheritance](lecture-6-inheritance/untitled.md)
 
