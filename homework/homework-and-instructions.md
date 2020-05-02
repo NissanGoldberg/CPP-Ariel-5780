@@ -14,7 +14,7 @@ Homework instructions for 5780 can be found [here](https://github.com/erelsgl-at
 
 ### [Exercises Calendar](https://calendar.google.com/calendar/embed?src=rco9l5v6m84rkra8pto6ou65t4%40group.calendar.google.com&ctz=Asia%2FJerusalem)
 
-\*\*\*\*[**שעות קבלה**](https://docs.google.com/spreadsheets/d/1U0mUMc5MzkCHTMlkpWsVnBybsvI-D6-3EySMZKZ1MgA/edit?usp=sharing) **- ימי שני מ16:00 עד 16:15**
+\*\*\*\*[**שעות קבלה**](https://docs.google.com/spreadsheets/d/1U0mUMc5MzkCHTMlkpWsVnBybsvI-D6-3EySMZKZ1MgA/edit?usp=sharing) **- ימי שני מ16:00 עד 16:45**
 
 link to zoom conference
 
