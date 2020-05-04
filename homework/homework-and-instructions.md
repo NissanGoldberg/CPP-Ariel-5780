@@ -50,8 +50,8 @@ git clone https://github.com/cpp-exercises/ancestor-tree-a.git
 
 | Wednesday | Thursday |
 | :--- | :--- |
-|  | **שירה צדוק** |
-| \*\*\*\* | **shaharivka** |
+| **יוסי טויטו** | **שירה צדוק** |
+| **עידו שפירא** | **shaharivka** |
 
 ### Exercise 3
 
