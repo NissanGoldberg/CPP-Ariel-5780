@@ -45,7 +45,7 @@ void Door :: close() { shut_ = true; }
 
 ```cpp
 /* Game.cpp */
-#include �Door.h�
+#include "Door.h"
 
 int main(){
   Door BigHouseDoor;
@@ -112,7 +112,7 @@ Added features
 /* defining the static members first */
 int Door::count_ = 0; /* defining and initializing count_*/
 int Door::getDoorCount () {
-/* this method can�t access shut_ !! */
+/* this method can't access shut_ !! */
   return count_;
 }
 
@@ -450,7 +450,7 @@ void CombinationLockDoor :: unlock(const Date& c) {
 
 ```text
 +-- Chest
-�     +-- LockableChest
+     +-- LockableChest
 ```
 
 `Makefile`
