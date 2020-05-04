@@ -31,7 +31,7 @@
 
 ## Lecture 4 - Const, Friend and Operators
 
-* [Operator Overloading - Exercise](lecture-4-const-friend-and-operators/untitled.md)
+* [index](lecture-4-const-friend-and-operators/untitled.md)
 
 ## Lecture 5 - Copy ctor and Conversion
 

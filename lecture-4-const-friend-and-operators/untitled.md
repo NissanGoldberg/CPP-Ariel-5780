@@ -1,4 +1,4 @@
-# Operator Overloading - Exercise
+# index
 
 ```cpp
 #include <iostream>
@@ -54,7 +54,7 @@ How many num of numbers greater or equal to 2?
 cout << std::count_if(v.begin(), v.end(),[N](int a){ return (a >= N);}) <<endl;
 ```
 
-#### Revisiting the polynomial functor
+### Revisiting the polynomial functor
 
 $$ax^2+bx+c$$
 
@@ -140,7 +140,7 @@ poly2(3) = 5*3^2 + 5*3 + 5 = 65
 =====
 ```
 
-**Same code but with color and different poly\(x\)**
+#### Same code but with color and different poly\(x\)
 
 ```cpp
 #include <iostream>
@@ -216,89 +216,85 @@ poly2(7) = 5*7^2 + 5*7 + 5 = 285
 =====
 ```
 
-#### Exercise
+### Exercise
 
 Find in the above code how many poly\(3\) are greater than 50 $$ax^2+bx+c>50$$
 
 > **Erase the ostream and couts**
->
-> \`\`\`cpp
->
-> ## include
->
-> ## include
->
-> ## include
->
-> ## include
+
+```cpp
+#include <iostream>
+#include <vector>
+#include <numeric>
+#include <algorithm>
 
 using namespace std;
 
-// ax^2 + bx + c - poly class Polynomial2 { double \_a,\_b,\_c; public: Polynomial2\(double a\):\_a\(a\), \_b\(0\), \_c\(0\){ } Polynomial2\(double a, double b, double c\):\_a\(a\), \_b\(b\), \_c\(c\){ }
+// ax^2 + bx + c - poly
+class Polynomial2 {
+    double _a,_b,_c;
+public:
+    Polynomial2(double a):_a(a), _b(0), _c(0){  }
+    Polynomial2(double a, double b, double c):_a(a), _b(b), _c(c){  }
 
-```text
-double operator() (double x) {
-    return _a*x*x + _b*x + _c;
-}
+    double operator() (double x) {
+        return _a*x*x + _b*x + _c;
+    }
 
-double operator()() { return 0; }
-```
-
+    double operator()() { return 0; }
 };
 
-struct Predicate{ int N;
 
-```text
-Predicate(int v):N(v){} //ctor
 
-bool operator()( Polynomial2& p) const{
-    return p(3) >= N;
-}
-```
+struct Predicate{
+    int N;
 
+    Predicate(int v):N(v){} //ctor
+
+    bool operator()( Polynomial2& p) const{
+        return p(3) >= N;
+    }
 };
 
-int main\(\) { int a=0,b=0,c=0; int x = 3;
 
-```text
-std::vector<Polynomial2> polies;
-for (int i = 0; i < 5; ++i)
-    polies.push_back(Polynomial2(++a,++b,++c));
+int main() {
+    int a=0,b=0,c=0;
+    int x = 3;
+
+    std::vector<Polynomial2> polies;
+    for (int i = 0; i < 5; ++i)
+        polies.push_back(Polynomial2(++a,++b,++c));
 
 
-int N=50;
-Predicate predicate{N};
+    int N=50;
+    Predicate predicate{N};
 
-cout << "How many num of poly(3) are greater or equal to "  << N << "?\n" <<
-     std::count_if(polies.begin(), polies.end(), predicate) <<endl; //calls predicate() on each value of v
+    cout << "How many num of poly(3) are greater or equal to "  << N << "?\n" <<
+         std::count_if(polies.begin(), polies.end(), predicate) <<endl; //calls predicate() on each value of v
 
-return 0;
-```
-
+    return 0;
 }
-
-```text
-
 ```
 
-How many num of poly\(3\) are greater or equal to 50? 2
-
 ```text
-#### Exercise
+How many num of poly(3) are greater or equal to 50?
+2
+```
+
+### Exercise
 
 Lets add Polynomial addition
+
 * `+`
 
-$$ (1x^2+2x+3) + (10x^2+10x+10)$$
+$$(1x^2+2x+3) + (10x^2+10x+10)$$
 
-$$ =11x^2+12x+1
-3$$
+$$=11x^2+12x+1 3$$
 
 * `+=`
 * `++` - pre/postfix: this will add 1 to the **c** of the polynomial
 
-$$ ax^2+bx+(c+1)$$
-
+$$ax^2+bx+(c+1)$$
 
 ```cpp
 #include <iostream>
@@ -400,7 +396,7 @@ poly2 =    8*x^2 + 8*x + 12
 poly2 =    8*x^2 + 8*x + 13
 ```
 
-#### SFML version
+### SFML version
 
 Before we begin lets install **SFML**
 
@@ -569,7 +565,7 @@ int main(){
 
 We should also normalize but we are going to keep it simple $$1/max*fx*Height$$
 
-### Polynomial 3
+## Polynomial 3
 
 $$ax^3+bx^2+cx+d$$
 
@@ -682,7 +678,7 @@ $$\int (0x^3+2x^2+3x+4)dx = \frac{2x^3}{3} + \frac{3x^2}{2} +4x +0$$
 
 $$f' (\frac{2x^3}{3} + \frac{3x^2}{2} +4x +0) = 0x^3+2x^2+3x+4$$
 
-#### SFML version
+### SFML version
 
 ```cpp
 #include <SFML/Graphics.hpp>
@@ -863,7 +859,7 @@ int main(){
 }
 ```
 
-#### Adding the `[] operator`
+### Adding the `[] operator`
 
 ```cpp
 const int operator[](uint index) const {
@@ -899,7 +895,7 @@ poly2 =    0*x^3 + 45*x^2 + 3*x + 4
 45
 ```
 
-### Thinking exercise
+## Thinking exercise
 
 Lets say we would like to add `< operator` what would you do?
 
@@ -913,14 +909,14 @@ return the lowest . If the they have the same the compare the b of ax^2.
 
 Now we are able to sort our polynimials
 
-#### If extra time
+### If extra time
 
 * Convert polynomial to array type instead of \_a,\_b
 * Deep copy
 
-#### Inline
+### Inline
 
-**Without inline**
+#### Without inline
 
 When the program executes the function call instruction
 
@@ -933,13 +929,13 @@ The CPU then executes the function code
 * stores the function return value in a predefined memory location/register
 * and returns control to the calling function.
 
-**With inline**
+#### With inline
 
 When the inline function is called whole code of the inline function gets inserted or substituted at the point of inline function call. This substitution is performed by the C++ compiler at compile time
 
 > **Remember:** inlining is only a _**request**_ to the compiler, not a command **Note:** all the functions defined inside the class are implicitly inline.
 
-#### Syntax
+### Syntax
 
 use the `inline` keyword before the function declaration
 
@@ -949,7 +945,7 @@ inline return-type function-name(parameters){
 }
 ```
 
-**Example**
+#### Example
 
 ```cpp
 #include <iostream>
