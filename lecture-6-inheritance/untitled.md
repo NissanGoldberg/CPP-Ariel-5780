@@ -735,3 +735,7 @@ Needs files:
 
 [Ariel font](https://www.freefontspro.com/14454/arial.ttf)
 
+#### Another Example
+
+[C++ Inheritance example](https://www.programiz.com/cpp-programming/inheritance)
+
