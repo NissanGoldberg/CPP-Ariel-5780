@@ -1,4 +1,4 @@
-# Inheritance
+# index
 
 ## Door Class
 
@@ -45,7 +45,7 @@ void Door :: close() { shut_ = true; }
 
 ```cpp
 /* Game.cpp */
-#include "Door.h"
+#include �Door.h�
 
 int main(){
   Door BigHouseDoor;
@@ -112,7 +112,7 @@ Added features
 /* defining the static members first */
 int Door::count_ = 0; /* defining and initializing count_*/
 int Door::getDoorCount () {
-/* this method can't access shut_ !! */
+/* this method can�t access shut_ !! */
   return count_;
 }
 
@@ -224,9 +224,7 @@ public:
 class LockableDoor : public Door
 ```
 
-when we inherit using `public` before Door we can access any _public_ and _protected_ variables and methods. If not specified the default is **private** 
-
-![](https://i.ibb.co/y0YCxgS/access.jpg)
+when we inherit using `public` before Door we can access any _public_ and _protected_ variables and methods. If not specified the default is **private** ![](https://i.ibb.co/y0YCxgS/access.jpg)
 
 We could also inherit from multiple classes as so:
 
@@ -351,6 +349,41 @@ int main() {
 }
 ```
 
+### What is the size of the following?
+
+This question was asked to me by a fellow student
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class A{
+private:
+    int i;
+};
+
+class B : public A{
+public:
+    int j;
+};
+
+int main(){
+   A a;
+   B b;
+   b.j = 100;
+//   b.i = 100; won't compile
+   cout << sizeof(a) << endl;
+   cout << sizeof(b) << endl;
+}
+```
+
+```text
+4
+8
+```
+
+As we can see even though **b** doesn't have access to **i** \(unless we use a setter/getter\) it will still use memory
+
 ### Inheritance: order of construction / destruction
 
 #### Class objects are constructed from the bottom up:
@@ -365,7 +398,7 @@ int main() {
 2. The members.
 3. The base.
 
-> **How to rember:** Think about this, first someones parents were born and then him \(construction\). Usually, the parents die before their children \(destruction\).
+> **How to rember:** Think about this, first someones parents were born and then him \(construction\). Now this makes alot of sense because our parent class probably has to initialize a few fields and only after can we use them.
 
 #### In our LockableDoor example
 
@@ -446,11 +479,11 @@ void CombinationLockDoor :: unlock(const Date& c) {
 }
 ```
 
-## Build visual Chest \(not on test\)
+### Build visual Chest
 
 ```text
 +-- Chest
-     +-- LockableChest
+�     +-- LockableChest
 ```
 
 `Makefile`
@@ -701,6 +734,4 @@ Needs files:
 [Door sprite](https://opengameart.org/content/animated-castle-doors)
 
 [Ariel font](https://www.freefontspro.com/14454/arial.ttf)
-
-![](../.gitbook/assets/game_pic.png)
 
