@@ -40,4 +40,5 @@
 ## Lecture 6 - Inheritance
 
 * [Inheritance](lecture-6-inheritance/untitled.md)
+* [Polymorphism](lecture-6-inheritance/polymorphism.md)
 
