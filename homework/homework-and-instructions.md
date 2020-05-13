@@ -59,5 +59,11 @@ git clone https://github.com/cpp-exercises/ancestor-tree-a.git
 git clone https://github.com/cpp-exercises/solver-a.git
 ```
 
+| Wednesday |  |
+| :--- | :--- |
+| **עידו שפירא** |  |
+| **אליהו פרץ** | \*\*\*\* |
+| **הילה שושן** |  |
+
 
 
