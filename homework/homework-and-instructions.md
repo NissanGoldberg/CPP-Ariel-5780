@@ -16,7 +16,7 @@ Homework instructions for 5780 can be found [here](https://github.com/erelsgl-at
 
 \*\*\*\*[**שעות קבלה**](https://docs.google.com/spreadsheets/d/1U0mUMc5MzkCHTMlkpWsVnBybsvI-D6-3EySMZKZ1MgA/edit?usp=sharing) **- ימי שני מ16:00 עד 16:45**
 
-[link ](https://us04web.zoom.us/j/79380887493?pwd=RHR1dnVTV1J2bytZZjVEajlWRHBUdz09)to zoom conference \(the link will be available a few minutes before 16:00\)
+link to zoom conference \(the link will be available a few minutes before 16:00\)
 
 ### Exercise 1
 
