@@ -62,7 +62,7 @@ git clone https://github.com/cpp-exercises/solver-a.git
 | Wednesday | Thursday |
 | :--- | :--- |
 | **עידו שפירא** | **שירה צדוק** |
-| **אליהו פרץ** | \*\*\*\* |
+| **אליהו פרץ** | **דקל גלבוע** |
 | **הילה שושן** |  |
 
 
