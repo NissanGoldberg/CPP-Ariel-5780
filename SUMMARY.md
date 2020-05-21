@@ -42,3 +42,8 @@
 * [Inheritance](lecture-6-inheritance/untitled.md)
 * [Polymorphism](lecture-6-inheritance/polymorphism.md)
 
+## Chapter 7 - IOStream <a id="chapter-7-iostreams"></a>
+
+* [Casting](chapter-7-iostreams/casting.md)
+* [IOStream](chapter-7-iostreams/iostream.md)
+
