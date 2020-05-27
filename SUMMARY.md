@@ -47,3 +47,7 @@
 * [Casting](chapter-7-iostreams/casting.md)
 * [IOStream](chapter-7-iostreams/iostream.md)
 
+## Chapter 8 - Templates and Iterators
+
+* [Templates and Iterators](chapter-8-templates-and-iterators/templates-and-iterators.md)
+
