@@ -5,7 +5,7 @@
 * `auto` show in **cppinsights**
 * Templates with constants **\(fib,sum,array\)**
 * Template specialization
-* Template Metaprogramming \(TMP\) [Physics](https://github.com/erelsgl-at-ariel/cpp-5780/blob/master/09-specializations-metaprogramming/6-metaprogramming-physics/mks.cpp)
+* Template Metaprogramming \(TMP\)
 * Lambdas
 
 There are 2 types of c++ developers:
