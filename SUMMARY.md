@@ -51,3 +51,7 @@
 
 * [Templates and Iterators](chapter-8-templates-and-iterators/templates-and-iterators.md)
 
+## Chapter 9 - Metaprogamming and Lambdas
+
+* [Metaprogramming and Lambdas](chapter-9-metaprogamming-and-lambdas/metaprogramming-and-lambdas.md)
+
