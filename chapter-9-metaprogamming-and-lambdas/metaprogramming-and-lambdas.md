@@ -1,4 +1,4 @@
-# Metaprogramming and Lambdas
+# Metaprogramming and Lambda Expressions
 
 ## Subjects
 
@@ -238,7 +238,369 @@ energy = 4.5e+17
 
 [source](https://www.codeproject.com/Articles/3743/A-gentle-introduction-to-Template-Metaprogramming)
 
-## Lambdas
+## Functors - Overriding Function call operator
 
-## auto
+```cpp
+#include <iostream>
+
+struct Multiply{
+    double operator()( const double v1, const double v2 ) const{
+        return v1 * v2;
+    }
+};
+
+int main (){
+    const double v1 = 3.3;
+    const double v2 = 2.0;
+    Multiply m;
+
+    std::cout << v1 << " * " << v2 << " = "
+              << m( v1, v2 )
+              << std::endl;
+}
+```
+
+```text
+3.3 * 2 = 6.6
+```
+
+## Understanding Lambdas
+
+What does a lambda really look like?
+
+```cpp
+int main(){
+    auto l = []() { return 5;};
+    cout << typeid(l).name() << endl;
+}
+```
+
+```text
+Z4mainEUlvE_
+```
+
+main- is the function, v- is void.
+
+Here the lambda `l` is similar to the following struct:
+
+```cpp
+struct __main_lambda_0{
+    auto operator()() const {
+        return 5;
+    }
+};
+```
+
+> Remove the double underscores to compile
+
+Now if we were to add a **int param** like this
+
+```cpp
+[](int i) { return 5+i;};
+```
+
+It would be similar to this
+
+```cpp
+struct __main_lambda_0{
+    auto operator()(int i) const {
+        return 5+i;
+    }
+};
+
+int main(){
+    auto l = [](int i) { return 5+i;};
+    cout << typeid(l).name() << endl;
+
+    cout << l(3) << endl;
+}
+```
+
+```text
+Z4mainEUliE_
+8
+```
+
+If we add a _**capture**_ it would look like this:
+
+```cpp
+[val](int i) { return 5+i+val; };
+```
+
+It is similar to this:
+
+```cpp
+//The same as the lambda l
+struct __main_lambda_0{
+    int val;
+
+    __main_lambda_0(int v):val(v){} //ctor
+
+    auto operator()(int i) const {
+        return 5 + i + val;
+    }
+};
+
+int main(){
+    int val = 10;
+    auto l = [val](int i) { return 5+i+val; };
+
+    //auto l = __main_lambda_0{val}; 
+
+    cout << l(3) << endl;
+}
+```
+
+First call the ctor with val, then call the functor with 3.
+
+Now if we replace `val` with `++val` wouldn't work, here is why
+
+```cpp
+int val = 10;
+auto l = [val](int i) { return 5+i+ ++val; };
+//cout << l(3) << endl;
+```
+
+this is because our structs \(\) operater is **const** in `auto operator()(int i) const {`
+
+#### mutable
+
+Now If we add the `mutable` specifier we would remove the const
+
+```cpp
+int val = 10;
+auto l = [val](int i) mutable { return 5+i+ ++val; };
+cout << l(1) << endl;
+```
+
+lets use the [cpp insights](https://cppinsights.io/) to see what is really happening here.
+
+#### auto in param
+
+Using `auto i`:
+
+```cpp
+int val = 10;
+auto l = [val](auto i) mutable { return 5+i+ ++val; };
+```
+
+Would result to this:
+
+```cpp
+struct __main_lambda_0{
+    int val;
+
+    template<typename T>
+    constexpr auto operator()(T i) const {
+        return 5 + i + val;
+    }
+};
+```
+
+### Lets Review
+
+* Basically a lamba is an **object**.
+* The _**capture list**_ is init list of the ctor.
+* The _**params**_ are a **functor** that is by default const unless we use the keyword `mutable`
+
+### Lambda syntaxes:
+
+* `[ captures ] ( params ) -> ret { body }`
+* `[ captures ] ( params ) { body }`
+* `[ captures ] { body }`
+
+**Added C++20 syntax**
+
+* `[ captures ] <tparams>( params ) specifiers exception->  { body }`
+
+```cpp
+// generic lambda, operator() is a template with two parameters
+auto glambda = []<class T>(T a, auto&& b) { return a < b; };
+
+// generic lambda, operator() is a template with one parameter pack
+auto f = []<typename ...Ts>(Ts&& ...ts) {
+   return foo(std::forward<Ts>(ts)...);
+};
+```
+
+#### Lambda capture
+
+Capture Many
+
+* `&` :  by reference
+* `=` : by value
+
+Capture individual:
+
+* `&var_name`:  by-reference capture
+* `this` :  by-reference capture of the current object
+
+#### Mixing up captures:
+
+```cpp
+[&]{};          // OK: by-reference capture default
+[&, i]{};       // OK: by-reference capture, except i is captured by copy
+```
+
+More about [lambdas](https://en.cppreference.com/w/cpp/language/lambda)
+
+## Examples of Lambdas
+
+```cpp
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using std::vector; using std::endl; using std::cout;
+
+int main(){
+    cout << "Starting Lambdas examples \n";
+    std::vector<int> v1 = { 3, 1, 7, 9 };
+    std::vector<int> v2 = { 10, 2, 7, 16, 9 };
+
+    // access v1 and v2 by reference
+    auto pushinto = [&v1,&v2](const int& m){
+        v1.push_back(m);
+        v2.push_back(m);
+    };
+    // it pushes 20 in both v1 and v2
+    pushinto(20);
+
+    // access v1 by copy
+    [v1]() {
+        cout << "printing values, access v1 by copy\n";
+        for (auto p = v1.begin(); p != v1.end(); p++)
+            cout << *p << " ";
+    }();
+}
+```
+
+```text
+Starting Lambdas examples 
+printing values, access v1 by copy
+3 1 7 9 20
+```
+
+Next we'll use the `find_if` function
+
+`InputIterator find_if (InputIterator first, InputIterator last, UnaryPredicate predicate);` **Returns:** an _**iterator**_ to the **first** element in the range \[first, last\] for **which pred\(function\) returns true**
+
+[explanation](https://www.geeksforgeeks.org/stdfind_if-stdfind_if_not-in-c/)
+
+Lets change our _**main**_ function to find first number greater than _N_. `[N]` denotes, can access only N by value
+
+```cpp
+int main(){
+  std::vector<int> v1 = { 3, 1, 7, 9,20 };
+  std::vector<int> v2 = { 10, 2, 7, 16, 9,20 };
+
+  int N = 5;
+  int k = 0;
+  auto p = find_if(v1.begin(), v1.end(), [N](int& i){
+          //i++; this works
+          return i > N;
+  });
+  cout << "First number greater than 5 is : " << *p << endl;
+  return 0;
+}
+```
+
+```text
+First number greater than 5 is : 7
+```
+
+if we were to change it to this we would get an error
+
+```cpp
+auto p = find_if(v1.begin(), v1.end(), [N](int& i){
+        k++;
+        return i > N;
+    });
+    cout << "K is " << k << endl;
+```
+
+Because _**k**_ cannot be implicitly captured because no default capture mode has been specified.
+
+Finally, lets use the `count_if` function in our main, which will **count** numbers greater than or equal to _N_.
+
+```cpp
+int main(){
+    std::vector<int> v1 = { 3, 1, 7, 9, 20 };
+    std::vector<int> v2 = { 10, 2, 7, 16, 9,20 };
+
+    int count_N = count_if(v1.begin(), v1.end(),
+                           [&N](int a)->bool{
+                               return (a >= N);
+                           });
+
+    cout << "The number of elements greater than or equal to 5 is : "
+         << count_N << endl;
+
+    return 0;
+  }
+```
+
+This code also works without spefically defining the return type `->bool` on line 6.
+
+We could clean this up to be one line:
+
+```cpp
+    int count_N = count_if(v1.begin(), v1.end(),[=](int a){ return (a >= N);});
+```
+
+Here we also used `[=]` to access all the variables _**by value**_
+
+### More Cool examples
+
+```cpp
+auto fib = [a = 0, b = 1]() mutable {
+        a = std::exchange(b, b + a);
+        return a;
+    };
+fib();
+```
+
+`std::exchange(b, b + a)` - Replaces the value of param1 with param2 and returns the old value of param1.
+
+#### Lambdas can even have states
+
+As stated before, lambdas are objects so we can even give them states and override operators. You can even inherit from a lambda.
+
+```cpp
+#include <iostream>
+#include <algorithm>    //std::any_of
+
+using namespace std;
+int main() {
+
+    auto fib = [a = 0, b = 1]() mutable{
+        struct Results {
+            int &a;
+            int &b;
+
+            Results next(int num =1){
+                while (num > 0){
+                    a = std::exchange(b, b + a);
+                    --num;
+                }
+                return *this;
+            }
+
+            operator int(){
+                return a;
+            }
+        };
+        return Results{a,b}.next();
+    };
+
+    cout << fib().next(5) << endl;
+    cout << fib() << endl;
+
+    return 0;
+}
+```
+
+```text
+8
+13
+```
 
