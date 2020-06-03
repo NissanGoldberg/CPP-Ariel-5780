@@ -256,7 +256,7 @@ int main () {
 
 ### Physics example
 
-$$Velocity=\frac{meter}{sec^1}$$ $$Acceleration=\frac{meter}{sec^2}$$ $$Energy=\frac{kg^2*meter}{sec^2}$$
+$$Velocity=\frac{meter}{sec^1},$$ $$Acceleration=\frac{meter}{sec^2},$$ $$Energy=J=\frac{kg^2*meter}{sec^2}$$
 
 ```cpp
 //@author: Dr. Erel Segel Halevi
