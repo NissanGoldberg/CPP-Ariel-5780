@@ -155,6 +155,10 @@ int main () {
 10
 ```
 
+
+
+![recursion explanation](https://i.ibb.co/6NbRXGb/metaprogramming-recursion.png)
+
 ![](https://i.ibb.co/y0zV24r/template-compile-time.png)
 
 The run-time isn't the run-time but rather the **compiler is the run-time**.
