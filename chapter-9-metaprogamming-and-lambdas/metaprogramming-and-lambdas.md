@@ -157,7 +157,7 @@ int main () {
 
 
 
-![recursion explanation](https://i.ibb.co/6NbRXGb/metaprogramming-recursion.png)
+![](https://i.ibb.co/b6RS6Db/metaprogramming-recursion.png)
 
 ![](https://i.ibb.co/y0zV24r/template-compile-time.png)
 
