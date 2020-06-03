@@ -65,9 +65,9 @@ git clone https://github.com/cpp-exercises/solver-a.git
 | **אליהו פרץ** | **דקל גלבוע** |
 | **הילה שושן** |  |
 
-### Exercise 4 part -a \(end of class\)
+### Exercise 4 part a - \(end of class\)
 
-| Wednesday | Thursday |
+| Wednesday - 03.06 | Thursday - 04.06 |
 | :--- | :--- |
 | יאיר סממה | עמיחי חדד |
 
