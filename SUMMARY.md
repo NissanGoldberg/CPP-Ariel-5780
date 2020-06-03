@@ -53,5 +53,5 @@
 
 ## Chapter 9 - Metaprogamming and Lambdas
 
-* [index](chapter-9-metaprogamming-and-lambdas/metaprogramming-and-lambdas.md)
+* [Metaprogramming and Lambda Expressions](chapter-9-metaprogamming-and-lambdas/metaprogramming-and-lambdas.md)
 
