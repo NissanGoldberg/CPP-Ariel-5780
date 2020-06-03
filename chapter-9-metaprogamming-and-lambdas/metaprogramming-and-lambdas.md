@@ -353,6 +353,19 @@ velocity_sum = 9
 energy = 4.5e+17
 ```
 
+The code above allows us to only add `+` the **same** units.This is because they have the **same m,k and s** 
+
+```cpp
+auto operator+(mks<m,k,s> a, mks<m,k,s> b)
+```
+
+But we can divide `/` and multiply `*` different unit
+
+```cpp
+template <int ma, int ka, int sa, int mb, int kb, int sb>
+auto operator/(mks<ma,ka,sa> a, mks<mb,kb,sb> b) {
+```
+
 #### Use TMP \(Template Meta-Programming\) when:
 
 * A **macro is not enough**. You need something more complex than a macro, and you need it expanded before compiled.
