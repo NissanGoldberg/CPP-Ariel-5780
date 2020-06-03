@@ -1,17 +1,132 @@
-# Metaprogramming and Lambda Expressions
+# index
 
 ## Subjects
 
 * `auto` show in **cppinsights**
 * Templates with constants **\(fib,sum,array\)**
 * Template specialization
-* Template Metaprogramming \(TMP\)
+* Template Metaprogramming \(TMP\) [Physics](https://github.com/erelsgl-at-ariel/cpp-5780/blob/master/09-specializations-metaprogramming/6-metaprogramming-physics/mks.cpp)
 * Lambdas
+
+## auto
+
+### vector example
+
+![](https://i.ibb.co/9wRQvhK/auto-on-vector.png)
+
+### list example
+
+![](https://i.ibb.co/dDXw6f5/auto-list.png)
+
+### Fixed vector example
+
+Lets make up a new container called `fixed_vector`
+
+```cpp
+#include <iostream>
+using std::cout;
+
+template <typename T, int I>
+class fixed_vector{
+    T arr[I];
+    int size;
+public:
+    fixed_vector() : size(0) {}
+
+    void push_back(T t){
+        if (size<I){
+            arr[size] = t;
+            ++size;
+        }
+    }
+
+    //TODO change to T&, was lazy :)
+    T operator[] (int index){
+        if (index<size && index>=0)
+            return arr[index];
+        else // was lazy :)
+            return -1;
+    }
+};
+
+int main(){
+    fixed_vector<int,3> fv;
+    for (int i = 1; i < 10; ++i)
+        fv.push_back(i);
+
+    for (int i = 0; i < 6; ++i)
+        cout << fv[i] << " ";
+
+    return 0;
+}
+```
+
+```text
+1 2 3 -1 -1 -1
+```
+
+## TODO add iterators
+
+## Specialization
+
+Sometimes we just want to feel special 😂
+
+```cpp
+#include <iostream>
+using std::cout,std::endl;
+
+template <typename T>
+struct SpecializedStruct{
+    SpecializedStruct() {cout << "I'm not special :(\n";}
+    void foo(){cout << "something stupid :(\n";}
+};
+
+template <>
+struct SpecializedStruct<double>{
+    SpecializedStruct() {
+        cout << "I'm a special struct :)\n";
+    }
+    void foo(){cout << "something funny :)\n";}
+};
+
+
+int main(){
+    SpecializedStruct<std::string> sp_stru;
+    sp_stru.foo();
+    cout << endl;
+
+    SpecializedStruct<double> not_sp_stru;
+    not_sp_stru.foo();
+    return 0;
+}
+```
+
+```text
+I'm not special :(
+something stupid :(
+
+I'm a special struct :)
+something funny :)
+```
+
+notice the emty `<>` in `template<>` on then the `struct SpecializedStruct<double>`
 
 There are 2 types of c++ developers:
 
 * those who like TMP
 * and those who don't
+
+## Template metaprogramming
+
+Template metaprogramming \(TMP\) in C++ is a technique for expressing and executing arbitrary algorithms in **compile-time** using C++ templates.
+
+TMP is a form of _**declarative programming**_ in which the logic of computation is expressed without the use of explicit control flow statements \(`if`, `else`, `for`\). Some of these languages include SQL,cypher and sparql
+
+So remember:
+
+* no mutability
+* no virtual functions
+* no RTTI,etc.
 
 ## Sum recursion
 
@@ -42,7 +157,9 @@ int main () {
 
 ![](https://i.ibb.co/y0zV24r/template-compile-time.png)
 
-## Fib recursion
+The run-time isn't the run-time but rather the **compiler is the run-time**.
+
+## Fibonacci recursion
 
 ```cpp
 //@author: nissan goldberg
@@ -97,32 +214,45 @@ more than **700x speedup** \(the compilation took 2x the amout so really 350x\)
 
 The entire recursion is done by the compiler, while the final program just contain a constant.
 
-### primes \(skip this\)
+### Fib with tail recursion \(skip this\)
 
 ```cpp
-//@author: https://stackoverflow.com/questions/16761082/check-if-number-is-prime-during-compilation-in-c
+//@author: nissan goldberg, was really cool :)
 #include <iostream>
+using namespace std;
 
-template <int N, int D>
-struct tmp {
-    static const bool result = (N%D) && tmp<N,D-1>::result;
+template <long N,long prev ,long next>
+struct Fib_tr{
+    static const long value = Fib_tr<N-1,next,next+prev>::value;
+};
+
+template <long prev, long next>
+struct Fib_tr<1, prev, next>{ //template class specialization
+    static const long value = next;
+};
+
+template <long prev ,long next>
+struct Fib_tr<0,prev, next>{
+    static const long value = prev;
 };
 
 template <int N>
-struct tmp<N,1> {
-    static const bool result = true;
+struct Fib{
+    static const long value = Fib_tr<N-1,0,1>::value;
 };
 
-template <int N>
-struct is_prime {
-    static const bool result = tmp<N,N-1>::result;
-};
 
-int main(){
-    std::cout << std::boolalpha << is_prime<7>::result;
+int main () {
+    cout << Fib<90>::value << endl;
     return 0;
 }
 ```
+
+```text
+1779979416004714189
+```
+
+[The first 300 Fibonacci numbers, factored](http://www.maths.surrey.ac.uk/hosted-sites/R.Knott/Fibonacci/fibtable.html) to check :\)
 
 ### Physics example
 
@@ -548,59 +678,4 @@ We could clean this up to be one line:
 ```
 
 Here we also used `[=]` to access all the variables _**by value**_
-
-### More Cool examples
-
-```cpp
-auto fib = [a = 0, b = 1]() mutable {
-        a = std::exchange(b, b + a);
-        return a;
-    };
-fib();
-```
-
-`std::exchange(b, b + a)` - Replaces the value of param1 with param2 and returns the old value of param1.
-
-#### Lambdas can even have states
-
-As stated before, lambdas are objects so we can even give them states and override operators. You can even inherit from a lambda.
-
-```cpp
-#include <iostream>
-#include <algorithm>    //std::any_of
-
-using namespace std;
-int main() {
-
-    auto fib = [a = 0, b = 1]() mutable{
-        struct Results {
-            int &a;
-            int &b;
-
-            Results next(int num =1){
-                while (num > 0){
-                    a = std::exchange(b, b + a);
-                    --num;
-                }
-                return *this;
-            }
-
-            operator int(){
-                return a;
-            }
-        };
-        return Results{a,b}.next();
-    };
-
-    cout << fib().next(5) << endl;
-    cout << fib() << endl;
-
-    return 0;
-}
-```
-
-```text
-8
-13
-```
 
