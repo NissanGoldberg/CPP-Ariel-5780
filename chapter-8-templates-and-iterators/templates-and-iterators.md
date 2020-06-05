@@ -592,6 +592,8 @@ typename Vector<T>::Iterator &Vector<T>::Iterator::operator++()
 template <typename T>
 bool Vector<T>::Iterator::operator!=(const Vector<T>::Iterator &other) const
 {
+    if (m_pVector!=other.m_pVector)
+            return false;
     return m_nIndex != other.m_nIndex;
 }
 ```
