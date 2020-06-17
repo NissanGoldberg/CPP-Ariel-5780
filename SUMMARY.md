@@ -62,4 +62,5 @@
 ## Chapter 11 - Algos and Smart Pointers <a id="chapter-11-algos"></a>
 
 * [Algorithms](chapter-11-algos/untitled.md)
+* [Smart Pointers](chapter-11-algos/smart-pointers.md)
 
