@@ -1,12 +1,14 @@
 # Algorithms
 
-[105 STL Algorithms in Less Than an Hour](https://www.youtube.com/watch?v=bFSnXNIsK4A)
+[Credits- 105 STL Algorithms in Less Than an Hour](https://www.youtube.com/watch?v=bFSnXNIsK4A)
 
 #### Sort Example
 
 ![](https://i.ibb.co/zQfL29p/sort-highlighted.png)
 
 The code examples will probably be given on the test.
+
+**1st way - Lambda**
 
 ```cpp
 #include <iostream>
@@ -26,6 +28,64 @@ int main() {
 ```text
 9 8 7 6 5 4 3 2 1 0
 ```
+
+**2nd way - Functor \(Function object\)**
+
+```cpp
+struct my_functor {
+    bool operator() (int i,int j) { return (i<j);}
+};
+
+int main(){
+    vector<int> v {1,2,3,4,-1};
+    sort(v.begin(), v.end(),my_functor{});
+
+    for (vector<int>::iterator it=v.begin(); it!=v.end(); ++it)
+        cout << ' ' << *it;
+}
+```
+
+```text
+-1 1 2 3 4
+```
+
+**3rd way - function**
+
+```cpp
+bool my_compare (int i,int j) { return (i<j); }
+
+int main(){
+    vector<int> v {1,2,3,4,-1};
+    sort(v.begin(), v.end(),my_compare);
+    for (auto it=v.begin(); it!=v.end(); ++it)
+        cout <<  *it  << ' ';
+}
+```
+
+```text
+-1 1 2 3 4
+```
+
+#### Now will `sort` work on a `list` or a `deque`?
+
+**Hint**: look at the iterator type
+
+{% tabs %}
+{% tab title="Hide" %}
+```
+The solution is on the other tab.
+```
+{% endtab %}
+
+{% tab title="Solution" %}
+```cpp
+On a deque: yes, since it has random access.
+On a list: no
+```
+{% endtab %}
+{% endtabs %}
+
+
 
 ### Lets Start 🤩
 
@@ -521,4 +581,292 @@ int main() {
 ```text
 1 2 3 4 5
 ```
+
+**Example 2**
+
+```cpp
+#include <vector>
+#include <deque>
+#include <iostream>
+#include <iterator>
+#include <algorithm>
+int main(){
+    std::vector<int> v{1,2,3,4,5};
+    std::deque<int> d;
+    std::copy(v.begin(), v.end(), std::front_inserter(d));
+    for(int n : d)
+        std::cout << n << ' ';
+}
+```
+
+```text
+5 4 3 2 1
+```
+
+* A `std::front_insert_iterator` which can be used to add elements to the **beginning** of the container that supports a `push_front` operation
+* A `std::back_insert_iterator` which can be used to add elements to the **end** of the container that supports a `push_back` operation
+
+#### `std::move`
+
+```cpp
+int main() {
+    std::vector<std::string> old_v = {"air","water","fire","earth"};
+    std::vector<std::string> new_v (4);
+    std::move ( old_v.begin(), old_v.begin()+4, new_v.begin() ); //old_v.begin()+4==old.end()
+
+    cout << "old_v, size: " << old_v.size() << endl;
+    for(const auto i : old_v)
+        cout << i << " "; cout << endl;
+
+    cout << "new_v\n";
+    for(const auto i : new_v)
+        cout << i << " ";
+}
+```
+
+```text
+old_v, size: 4
+
+new_v
+air water fire earth
+```
+
+**Example 2**
+
+```cpp
+int main() {
+    std::vector<std::string> old_v = {"air","water","fire","earth"};
+    std::vector<std::string> new_v;
+    new_v = std::move (old_v);
+
+    cout << "old_v, size: " << old_v.size() << endl;
+    for(const auto i : old_v)
+        cout << i << " "; cout << endl;
+
+    cout << "new_v\n";
+    for(const auto i : new_v)
+        cout << i << " ";
+}
+```
+
+```text
+old_v, size: 0
+
+new_v
+air water fire earth
+```
+
+Notice the size is 0.
+
+For more about `std::move` look at R-value references and move constructors.
+
+#### std::copy\_backward
+
+![](https://i.ibb.co/ynp4jtF/copy-backward.png)
+
+## Value Modifiers
+
+* `fill`
+* `generate`
+* `iota`
+* `replace`
+
+![](https://i.ibb.co/N1Pn6k3/modifiers.png)
+
+#### `std::generate`
+
+```cpp
+int main(){
+    vector<int> v(5);
+    std::generate(v.begin(), v.end(), std::rand);
+    for (auto i1: v)
+        std::cout << i1 << " ";
+}
+```
+
+```text
+1804289383 846930886 1681692777 1714636915 1957747793
+```
+
+#### `std::generate_n`
+
+```cpp
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <time.h>
+#include <map>
+using std::vector, std::string, std::cout;
+
+class Point{
+    int x;
+    int y;
+public:
+    Point(int ix = 0 , int iy = 0) :x(ix), y(iy) {} //use only this construction
+    int getX() const { return x; }
+    int getY() const { return y; }
+    friend std::ostream& operator<< (std::ostream& ostr, const Point& p) { ostr << p.x << "  " << p.y << "\n"; return ostr; }
+};
+
+
+Point&& genPoint(){
+    srand(time(0));
+    return std::move(Point(rand() % 100, rand() % 100));
+}
+
+int main() {
+    vector<Point> v2(5);
+    std::generate_n(v2.begin(), 5, genPoint);
+    for (auto i1 : v2) {
+        cout << i1 << " ";
+    }
+}
+```
+
+```text
+39  42
+ 39  42
+ 39  42
+ 39  42
+ 39  42
+```
+
+## Structure Changers
+
+* `remove`
+* `unique`
+
+#### `std::remove`
+
+```cpp
+int main() {
+    vector<int> v = { 1, 1, 3, 3, 3, 10, 1, 3, 3, 7, 7, 8 }, i;
+    auto it_end = std::remove(v.begin(), v.end(),3); //remove 3's
+
+    for (auto it = v.begin(); it != it_end; ++it)
+        cout << *it << " "; cout << endl;
+
+    for (auto i : v)
+        cout << i << " ";
+}
+```
+
+```text
+1 1 10 1 7 7 8 
+1 1 10 1 7 7 8 3 3 7 7 8
+```
+
+#### `std::unique`
+
+```cpp
+int main() {
+    vector<int> v = { 1, 1, 3, 3, 3, 10, 1, 3, 3, 7, 7, 8 }, i;
+    auto it_end = std::unique(v.begin(), v.begin() + 12);// Now v becomes {1 3 10 1 3 7 8 * * * * *} , * means undefined
+
+    for (auto it = v.begin(); it != it_end; ++it)
+        cout << *it << " "; cout << endl;
+
+    for (auto i : v)
+        cout << i << " ";
+}
+```
+
+```text
+1 3 10 1 3 7 8 
+1 3 10 1 3 7 8 3 3 7 7 8
+```
+
+Notice it **didn't get rid of all the duplicates** and return a set but rather got rid of each duplicate adjacent to another.
+
+![std-unique.jpg](https://i.ibb.co/dQDF9tW/std-unique.jpg)
+
+## `*_COPY`
+
+* `remove_copy`
+* `unique_copy`
+* `reverse_copy`
+* `rotate_copy`
+* `replace_copy`
+* `partition_copy`
+* `partial_sort_copy`
+
+#### `std::remove_copy`
+
+**Example 1:**
+
+```cpp
+int main () {
+    int myints[] = {10,20,30,30,20,10,10,20};                             // 10 20 30 30 20 10 10 20
+    std::vector<int> new_vector (8);
+    auto end_it = std::remove_copy (myints,myints+8,new_vector.begin(),20);// 10   30 30    10 10  0 0 0
+
+    for (auto it=new_vector.begin(); it!=end_it; ++it)
+        std::cout << ' ' << *it;
+}
+```
+
+```text
+10 30 30 10 10
+```
+
+**Example 2:**
+
+```cpp
+int main () {
+    int myints[] = {10,20,30,30,20,10,10,20};                // 10 20 30 30 20 10 10 20
+    std::vector<int> new_vector (8);
+    std::remove_copy (myints,myints+8,new_vector.begin(),20);// 10    30 30    10 10  0 0 0
+
+    for (const auto i : new_vector)
+        cout << i << ' ';
+}
+```
+
+```text
+10 30 30 10 10 0 0 0
+```
+
+## `*_IF`
+
+* `find_if`
+* `find_if_not`
+* `count_if`
+* `remove_if`
+* `remove_copy_if`
+* `replace_if`
+* `replace_copy_if`
+* `copy_if`
+
+#### `std::count_if`
+
+```cpp
+int main(){
+    vector<int> v {1,2,3,4,-1};
+    int N=2;
+    cout << count_if(v.begin(), v.end(),[N](int a){ return (a >= N);}) <<endl;
+}
+```
+
+```text
+3
+```
+
+## transform
+
+```cpp
+int main(){
+    std::vector<int> foo;
+    std::vector<int> bar(6);
+    for (int i=1; i<6; i++)
+        foo.push_back (i*10);// foo: 10 20 30 40 50
+
+    int N = 2;
+    std::transform (foo.begin(), foo.end(), bar.begin(), [N](int i) { return i+=N; }); // bar: 12 22 32 42 52
+    std::transform (foo.begin(), foo.end(), bar.begin(), foo.begin(), std::plus<int>());
+    for (auto i : foo)
+        cout << i << " ";
+}
+```
+
+`foo.begin(), std::plus`: foo is the output and `std::plus` adds together its two arguments, we could have use a lambda instead
 
