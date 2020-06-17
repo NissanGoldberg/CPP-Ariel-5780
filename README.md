@@ -25,5 +25,5 @@ Progress
 
 | Wednesday | Thursday |
 | :--- | :--- |
-| Continue with lambda expr. |  |
+| Algos and Smart Pointers | Algos and Smart Pointers |
 
