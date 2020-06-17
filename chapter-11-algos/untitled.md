@@ -89,7 +89,7 @@ On a list: no
 
 ### Lets Start 🤩
 
-## Land of Permutations
+## Permutations
 
 ### Province of Heaps
 
@@ -321,7 +321,7 @@ upper: 8 6 10
 
 [prev\_permutation - C++ Reference](http://www.cplusplus.com/reference/algorithm/prev_permutation/)
 
-## Secret Runes
+## Algo combination
 
 Algos we can combine with other algos to create new algos
 
@@ -400,7 +400,7 @@ int main() {
 1
 ```
 
-## Land of Queries
+## Queries
 
 ### Numerical Algos
 
@@ -557,7 +557,7 @@ all are positive
   * `upper_bound`
   * `binary_search`
 
-## Territory of Movers
+## Movers
 
 * `move`
 * `copy`
