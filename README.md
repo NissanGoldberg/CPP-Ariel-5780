@@ -25,5 +25,5 @@ Progress
 
 | Wednesday | Thursday |
 | :--- | :--- |
-| Algos and Smart Pointers | Algos and Smart Pointers |
+| Smart Pointers, Bash Questions and Review | Algos and RAII |
 
