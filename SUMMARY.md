@@ -14,6 +14,7 @@
 * [Overloading and Linking](lecture-1-intro/overloading-and-linking.md)
 * [Linux and Bash commands](lecture-1-intro/linux-and-bash-commands.md)
 * [Exercises](lecture-1-intro/exercises.md)
+* [Technion Bash Questions](lecture-1-intro/technion-bash-questions.md)
 
 ## Lecture 2 - OOP <a id="lecture-2"></a>
 
