@@ -1,6 +1,6 @@
 # Technion Bash Questions
 
-The questions and solutions can be found in our moodle class website
+The questions and solutions can be found [here ](https://moodlearn.ariel.ac.il/mod/resource/view.php?id=1161055)or on  our moodle class website
 
 [Bash Special Variables – MyLinuxPlace](https://www.mylinuxplace.com/bash-special-variables/)
 
