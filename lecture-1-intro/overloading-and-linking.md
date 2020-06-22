@@ -1,4 +1,4 @@
-# Overloading and Linking
+# Overloading
 
 ## Function Overloading
 

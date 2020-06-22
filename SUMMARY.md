@@ -11,7 +11,7 @@
 
 * [IO and Namespaces](lecture-1-intro/untitled.md)
 * [Enums and Exceptions](lecture-1-intro/enums-and-exceptions.md)
-* [Overloading and Linking](lecture-1-intro/overloading-and-linking.md)
+* [Overloading](lecture-1-intro/overloading-and-linking.md)
 * [Linux and Bash commands](lecture-1-intro/linux-and-bash-commands.md)
 * [Exercises](lecture-1-intro/exercises.md)
 * [Technion Bash Questions](lecture-1-intro/technion-bash-questions.md)
