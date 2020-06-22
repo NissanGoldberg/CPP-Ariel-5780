@@ -85,9 +85,7 @@ _Overload resolution_ is the way the compilers knows which function to call \(bu
 * Step 2: functions with the correct number of args
 * Step 3: choose function with best matching arguments
 
-## Linking
 
-### TODO
 
 ## doctest.h
 
@@ -104,6 +102,4 @@ TEST_CASE("testing the factorial function") {
     CHECK(factorial(4) == 999);
 }
 ```
-
-### TODO
 
