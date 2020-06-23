@@ -1,4 +1,4 @@
-# Selected Homework Solutions
+# Some Homework Solutions
 
 ​ **בס"ד**
 
