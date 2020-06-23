@@ -21,9 +21,3 @@ My databases gitbook can be found [here ](https://app.gitbook.com/@nissan-goldbe
 
 ## If you find any mistake please submit them [here](https://docs.google.com/spreadsheets/d/1G-5IEBaoo7dJiokXQaSpN3yJBPKGz6hsjaXV8s6MLmc/edit?usp=sharing)
 
-Progress
-
-| Wednesday | Thursday |
-| :--- | :--- |
-| Smart Pointers, Bash Questions and Review | Algos and RAII |
-
