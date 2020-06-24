@@ -67,3 +67,8 @@
 * [RAII](chapter-11-algos/raii.md)
 * [Smart Pointers](chapter-11-algos/smart-pointers.md)
 
+## Test Questions
+
+* [5779 a](test-questions/5779-a.md)
+* [5779 b and 5778](test-questions/5779-b-and-5778.md)
+
